@@ -1,36 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JUEGO</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="contenedor"> 
-        <h1>JUEGO DE VELOCIDAD DE TIPEO</h1>
-        <div id="inicio">
-            <img src="img\images.png" alt="img">
-            <p class="p">¿Cuantas palabras puedes tipiar en 1 minuto?</p>
-            <button class="button" onclick="comenzarjuego()">COMENZAR JUEGO</button>
-         </div>
-      <div class="juego" id="juego">
-        <div id="tiempo" class="tiempo">59</div>
-        <div id="palabra" class="palabra_estilo">palabra</div>
-        <input type="text" placeholder="Escribi aqui..." id="palabra ingresada" class="entrada" onkeyup="comparar()">
-        <div class="listado" id="registro">
-            <h3>PALABRAS TIPIADAS</h3>
-           
-         </div>
-         </div>
-         <div class="estilo final" id="final">
-            <p class="texto_final">PALABRAS TIPIADAS EN 1 MINUTO</p>
-            <div class="estilo_cantidad_final" id="cantidad final">30</div>
-            <a href="index.html" class="button">JUGAR DE NUEVO</a>
-
-         </div>
-         </div> 
-         <script src="scrypt.js"></script>
-</body>
+<html>
+  <head>
+    <title>Agenda de Contactos</title>
+    <style>
+      /* Estilos para la página */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="datetime-local"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Agenda de Contactos</h1>
+    <form>
+      <label for="nombre">Nombre del contacto:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" name="descripcion" required>
+      
+      <label for="fecha">Fecha y hora:</label>
+      <input type="datetime-local" id="fecha" name="fecha" required>
+      
+      <button type="button" onclick="agendarContacto()">Agendar</button>
+    </form>
+    
+    <script>
+      function agendarContacto() {
+        // Obtenemos los valores de los campos del formulario
+        var nombre = document.getElementById("nombre").value;
+        var descripcion = document.getElementById("descripcion").value;
+        var fecha = new Date(document.getElementById("fecha").value);
+        
+        // Creamos una nueva alerta con la información del contacto
+        setTimeout(function() {
+          alert("Recordatorio: " + nombre + "\n" + descripcion);
+        }, fecha - new Date());
+        
+        // Limpiamos los campos del formulario
+        document.getElementById("nombre").value = "";
+        document.getElementById("descripcion").value = "";
+        document.getElementById("fecha").value = "";
+      }
+    </script>
+  </body>
 </html>
